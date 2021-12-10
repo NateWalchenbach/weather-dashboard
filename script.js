@@ -4,24 +4,23 @@
 var userInput = document.getElementById("user-city-input");
 const searchBtnEl = document.getElementById("search-button-el");
 const cityEl = document.getElementById("city-name");
-const currentWeatherDate = document.querySelector('date')
-const currentWeather = document.querySelector('weather')
-const currentWeatherTemp = document.querySelector('temp')
-const currentWeatherHumid = document.querySelector('humid')
-const currentWeatherWindSpeed = document.querySelector('wind')
-  "click",
-  function () {
-    const trimmedUserInputValue = userInput.value.trim(); //Gets the city that the user types in
-    var apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${trimmedUserInputValue}&appid=00fa94081906ea02a56463e3f68c7b6f`;
-    // Fetches the url with the city
-    fetch(apiUrl)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        console.log(data);
+const currentWeatherDate = document.querySelector("date");
+const currentWeather = document.querySelector("weather");
+const currentWeatherTemp = document.querySelector("temp");
+const currentWeatherHumid = document.querySelector("humid");
+const currentWeatherWindSpeed = document.querySelector("wind");
 
-        cityEl.textContent = data.name;
-      });
-  }
-);
+searchBtnEl.addEventListener("click", function () {
+  const trimmedUserInputValue = userInput.value.trim(); //Gets the city that the user types in
+  var apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${trimmedUserInputValue}&appid=00fa94081906ea02a56463e3f68c7b6f`;
+  // Fetches the url with the city
+  fetch(apiUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+
+      cityEl.textContent = data.name;
+    });
+});
